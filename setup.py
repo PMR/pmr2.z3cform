@@ -26,6 +26,7 @@ setup(name='pmr2.z3cform',
           'setuptools',
           # -*- Extra requirements: -*-
           'plone.z3cform>=0.7.7',
+          'pmr2.testing',
       ],
       entry_points="""
       # -*- Entry points: -*-
