@@ -9,7 +9,6 @@
       directory="profiles/default"
       description="PMR2 and related library specific extensions to z3c.form."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
 
 </configure>
