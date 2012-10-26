@@ -5,7 +5,7 @@
   >
   <head></head>
   <body>
-    <metal:define define-macro="pmr2_main">
+    <metal:define define-macro="main">
 
       <metal:slot define-slot="style_slot">
       </metal:slot>

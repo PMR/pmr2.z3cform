@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="pmr2"
 
-  ><metal:define define-macro="pmr2_main"
+  ><metal:define define-macro="main"
     ><tal:block metal:use-macro="context/main_template/macros/master">
 
       <metal:block fill-slot="style_slot">
