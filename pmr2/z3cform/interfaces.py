@@ -1,12 +1,12 @@
 import zope.schema
 import zope.interface
 import zope.publisher.interfaces
-from plone.theme.interfaces import IDefaultPloneLayer
+from plone.app.z3cform.interfaces import IPloneFormLayer
 
 from pmr2.z3cform.i18n import MessageFactory as _
 
 
-class IFormLayer(IDefaultPloneLayer):
+class IFormLayer(IPloneFormLayer):
     """\
     Marker interface for the customized forms.
     """
