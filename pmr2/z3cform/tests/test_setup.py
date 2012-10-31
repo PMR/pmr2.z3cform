@@ -1,6 +1,5 @@
 from unittest import TestSuite, makeSuite
 
-from plone.browserlayer.utils import registered_layers
 from plone.browserlayer.layer import mark_layer
 from zope.app.publication.zopepublication import BeforeTraverseEvent
 
@@ -22,7 +21,7 @@ class TestProductInstall(TestCase):
         from plone.app.z3cform.interfaces import IPloneFormLayer
         from pmr2.z3cform.interfaces import IFormLayer
 
-        layers = registered_layers()
+        layers = self.portal.REQUEST.__provides__.__iro__
         # The marker layer for pmr2.z3cform must be higher than the 
         # default plone form layer.
         self.assertTrue(
