@@ -42,8 +42,8 @@ class SimplePage(BrowserPage):
 
     @property
     def label(self):
-        label = getToolByName(self.context, 'title_or_id', None)
-        if label:
+        label = getattr(self.context, 'title_or_id', None)
+        if callable(label):
             return label()
 
     def update(self):
