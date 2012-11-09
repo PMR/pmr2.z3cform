@@ -36,6 +36,7 @@ class DisplayForm(z3c.form.form.DisplayForm):
     A very generic display form.
     """
 
+    id = ''  # plone.app.z3cform template macros expect this.
     enctype = FieldProperty(z3c.form.interfaces.IInputForm['enctype'])
 
     def __call__(self):
