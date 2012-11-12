@@ -35,10 +35,10 @@ all the templates associated with Plone.
     >>> from Testing.testbrowser import Browser
     >>> zope.component.provideAdapter(TestPage, (None, None),
     ...     zope.publisher.interfaces.browser.IBrowserView,
-    ...     name='test-page')
+    ...     name='pmr2z3cform-testpage')
     ... 
     >>> tb = Browser()
-    >>> tb.open(context.absolute_url() + '/@@test-page')
+    >>> tb.open(context.absolute_url() + '/@@pmr2z3cform-testpage')
     >>> 'Plone - http://plone.org' in tb.contents
     True
     >>> '<div>Hello</div>' in tb.contents
