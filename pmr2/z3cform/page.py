@@ -2,8 +2,6 @@ import zope.interface
 from zope.pagetemplate.interfaces import IPageTemplate
 from zope.publisher.browser import BrowserPage
 
-from Products.CMFCore.utils import getToolByName
-
 from plone.z3cform.templates import ZopeTwoFormTemplateFactory
 
 from pmr2.z3cform.interfaces import IPublishTraverse, IPage
@@ -32,13 +30,6 @@ class SimplePage(BrowserPage):
     def url_subpath(self):
         # URL expression for the subpath.
         return ''
-
-    @property
-    def portal_url(self):
-        portal_url = getToolByName(self.context, 'portal_url', None)
-        if portal_url:
-            portal = portal_url.getPortalObject()
-            return portal.absolute_url()
 
     @property
     def label(self):
