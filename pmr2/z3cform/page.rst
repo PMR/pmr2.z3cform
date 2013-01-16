@@ -41,6 +41,40 @@ all the templates associated with Plone::
     >>> '<div>Hello</div>' in tb.contents
     True
 
-As traversal views are generally implementation specific, currently 
-testing is deferred to those specific use cases until a more general
-pattern is derived.
+While traversal views are generally implementation specific, a quick
+demonstration is still possible.  Try subclassing one::
+
+    >>> from pmr2.z3cform.page import TraversePage
+    >>>
+    >>> class TestTraversePage(TraversePage):
+    ...     _template = 'Subpath is: %s'
+    ...     def template(self):
+    ...          subpath = '/'.join(self.traverse_subpath)
+    ...          return self._template % subpath
+
+Manually simulate traversal and render the form::
+
+    >>> context = self.portal
+    >>> request = TestRequest()
+    >>> page = TestTraversePage(context, request)
+    >>> p = page.publishTraverse(request, 'a')
+    >>> p = page.publishTraverse(request, 'b')
+    >>> print page()
+    <h1 class="documentFirstHeading">Plone site</h1>
+    <div id="content-core">
+      <div>Subpath is: a/b</div>
+    </div>
+
+Much like the SimplePage example, do the registration again::
+
+    >>> zope.component.provideAdapter(TestTraversePage, (None, None),
+    ...     zope.publisher.interfaces.browser.IBrowserView,
+    ...     name='pmr2z3cform-testtraversepage')
+    ... 
+    >>> tb = Browser()
+    >>> tb.open(context.absolute_url() + '/@@pmr2z3cform-testtraversepage' +
+    ...     '/a/b/c/some_path')
+    >>> 'Plone - http://plone.org' in tb.contents
+    True
+    >>> '<div>Subpath is: a/b/c/some_path</div>' in tb.contents
+    True
