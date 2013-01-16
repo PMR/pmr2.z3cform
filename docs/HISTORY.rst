@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1 - Unreleased
+0.1 - 2013-01-17
 ----------------
 
 * Initial release of various helper forms and view classes for the pmr2
