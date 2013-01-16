@@ -1,5 +1,5 @@
-Page
-====
+Pages
+=====
 
 These were just simple rendering pages meant for wrapping by the layout
 classes to be replaced by more standard Plone way of rendering 
