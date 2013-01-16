@@ -11,3 +11,19 @@ and related libraries.  Problems this package attempt to tackle are:
   - XSS (Cross Site Scripting) prevention via the use of appropriate 
     form authenticators, e.g. plone.protect for Plone.
   - Forms with traversal subpaths.
+
+Installation and usage
+----------------------
+
+Just add or modified the `install_requires` option into the setup
+function in a typical `setup.py`, like so::
+
+    from setuptools import setup
+    
+    setup(
+        ...
+        install_requires=[
+            ...
+            'pmr2.z3cform',
+        ]
+    )
