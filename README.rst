@@ -15,8 +15,8 @@ and related libraries.  Problems this package attempt to tackle are:
 Installation and usage
 ----------------------
 
-Just add or modified the `install_requires` option into the setup
-function in a typical `setup.py`, like so::
+Just add or modified the ``install_requires`` option into the setup
+function in a typical ``setup.py``, like so::
 
     from setuptools import setup
     
