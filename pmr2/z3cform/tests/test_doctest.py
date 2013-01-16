@@ -11,14 +11,14 @@ def test_suite():
 
         # Doctest for PMR2 pages
         ztc.ZopeDocFileSuite(
-            'page.txt', package='pmr2.z3cform',
+            'page.rst', package='pmr2.z3cform',
             test_class=base.DocTestCase,
             optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS,
         ),
 
         # Doctest for PMR2 forms
         ztc.ZopeDocFileSuite(
-            'form.txt', package='pmr2.z3cform',
+            'form.rst', package='pmr2.z3cform',
             test_class=base.DocTestCase,
             optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS,
         ),
