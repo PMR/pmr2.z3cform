@@ -4,7 +4,7 @@ Forms
 Forms in PMR2 are built on top of z3c.forms.  There are certain changes
 we made to allow this library to better fit into our use cases.  There
 are a couple modifications, the first being the enforcement of request
-method, and the other is CSRF protection.
+method, and the other is CSRF (Cross-site Request Forgery) protection.
 
 First we import some base classes and create a test form class::
 
@@ -61,9 +61,9 @@ On the other hand, POST requests will not trigger the permission error::
     test
 
 However, notice that the security authenticator is disabled.  What this
-provide is the check for a CSRF (Cross-site Request Forgery) prevention
-token that must be part of a request.  Now try the above with the check
-enabled, as it will be by default::
+provide is the check for a CSRF prevention token that must be part of a
+request.  Now try the above with the check enabled, as it will be by
+default::
 
     >>> context = []
     >>> request.method = 'POST'
