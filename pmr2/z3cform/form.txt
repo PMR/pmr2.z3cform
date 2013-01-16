@@ -11,7 +11,7 @@ base classes and create a test form class.
     >>> import zope.interface
     >>> import zope.schema
     >>> import z3c.form.field
-    >>> from pmr2.testing.base import TestRequest
+    >>> from pmr2.z3cform.tests.base import TestRequest
     >>> from pmr2.z3cform.form import AddForm
     >>>
     >>> class IDummy(zope.interface.Interface):

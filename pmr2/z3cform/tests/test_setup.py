@@ -3,10 +3,10 @@ from unittest import TestSuite, makeSuite
 from plone.browserlayer.layer import mark_layer
 from zope.app.publication.zopepublication import BeforeTraverseEvent
 
-from pmr2.testing.base import TestCase
+from Products.PloneTestCase import PloneTestCase as ptc
 
 
-class TestProductInstall(TestCase):
+class TestProductInstall(ptc.PloneTestCase):
 
     def afterSetUp(self):
         self.addProfile('pmr2.z3cform:default')

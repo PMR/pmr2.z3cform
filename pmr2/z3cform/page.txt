@@ -8,7 +8,7 @@ templates.
 Let's subclass one.
 ::
 
-    >>> from pmr2.testing.base import TestRequest
+    >>> from pmr2.z3cform.tests.base import TestRequest
     >>> from pmr2.z3cform.page import SimplePage
     >>>
     >>> class TestPage(SimplePage):
