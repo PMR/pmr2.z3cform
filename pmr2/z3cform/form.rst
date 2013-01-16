@@ -1,17 +1,18 @@
-PMR2 Forms
-==========
+Forms
+=====
 
 Forms in PMR2 are built on top of z3c.forms.  There are certain changes
-we made to allow this library to better fit into our use cases.
+we made to allow this library to better fit into our use cases.  There
+are a couple modifications, the first being the enforcement of request
+method, and the other is CSRF protection.
 
-One change is the enforcement of request method.  First we import some
-base classes and create a test form class.
-::
+First we import some base classes and create a test form class::
 
     >>> import zope.interface
     >>> import zope.schema
     >>> import z3c.form.field
-    >>> from pmr2.z3cform.tests.base import TestRequest
+    >>> from z3c.form.testing import TestRequest
+    >>> from pmr2.z3cform.tests import base
     >>> from pmr2.z3cform.form import AddForm
     >>>
     >>> class IDummy(zope.interface.Interface):
@@ -33,8 +34,8 @@ base classes and create a test form class.
     ...     def nextURL(self):
     ...         return ''  # unnecessary.
 
-Now we test that GET will fail.
-::
+First thing to demonstrate is is the request method verification.  Forms
+that manipulate data must not be activated by a simple GET request::
 
     >>> context = []
     >>> request = TestRequest(form={
@@ -50,11 +51,42 @@ Now we test that GET will fail.
     >>> context == []
     True
 
-On the other hand, POST will work.
-::
+On the other hand, POST requests will not trigger the permission error::
 
     >>> request.method = 'POST'
     >>> form = TestAddForm(context, request)
+    >>> form.disableAuthenticator = True
+    >>> result = form()
+    >>> print context[0].id
+    test
+
+However, notice that the security authenticator is disabled.  What this
+provide is the check for a CSRF (Cross-site Request Forgery) prevention
+token that must be part of a request.  Now try the above with the check
+enabled, as it will be by default::
+
+    >>> context = []
+    >>> request.method = 'POST'
+    >>> form = TestAddForm(context, request)
+    >>> result = form()
+    Traceback (most recent call last):
+    ...
+    Unauthorized: Unauthorized()
+    >>> context == []
+    True
+
+If the token is provided, as part of a normal form submission process
+using a form rendered by this site, the token will be included within
+a hidden input field.  In the case of Plone, this token is provided by
+an authenticator view.  If we include the generated token the form
+will be submitted properly::
+
+    >>> context = []
+    >>> authed_request = base.TestRequest(form=request.form)
+    >>> authed_request.method = 'POST'
+    >>> '_authenticator' in authed_request.form
+    True
+    >>> form = TestAddForm(context, authed_request)
     >>> result = form()
     >>> print context[0].id
     test

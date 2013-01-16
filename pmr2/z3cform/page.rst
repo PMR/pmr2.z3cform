@@ -5,8 +5,7 @@ These were just simple rendering pages meant for wrapping by the layout
 classes to be replaced by more standard Plone way of rendering 
 templates.
 
-Let's subclass one.
-::
+Let's subclass one::
 
     >>> from pmr2.z3cform.tests.base import TestRequest
     >>> from pmr2.z3cform.page import SimplePage
@@ -14,8 +13,7 @@ Let's subclass one.
     >>> class TestPage(SimplePage):
     ...     template = lambda x: 'Hello'
 
-Then render it:
-::
+Then render it::
 
     >>> context = self.portal
     >>> request = TestRequest()
@@ -28,8 +26,7 @@ Then render it:
 
 If we register this view on the main site, we should be able to render
 this using the testbrowser.  This will then render the same page with
-all the templates associated with Plone.
-::
+all the templates associated with Plone::
 
     >>> import zope.component
     >>> from Testing.testbrowser import Browser
