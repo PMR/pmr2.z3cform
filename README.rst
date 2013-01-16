@@ -10,8 +10,8 @@ and related libraries.  Problems this package attempt to tackle are:
     or make use of wrapper classes/methods.  It may be possible to
     support other frameworks by registering the root view to the desired
     layer.
-  - XSS (Cross Site Scripting) prevention via the use of appropriate 
-    form authenticators, e.g. plone.protect for Plone.
+  - CSRF (Cross-Site Request Forgery) prevention via the use of
+    appropriate form authenticators, e.g. plone.protect for Plone.
   - Offer the same adaptable browser class (pages) to standard non-form
     views.
   - Forms with traversal subpaths.
