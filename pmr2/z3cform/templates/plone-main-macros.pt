@@ -7,6 +7,12 @@
   ><metal:define define-macro="main"
     ><tal:block metal:use-macro="context/main_template/macros/master">
 
+      <metal:block fill-slot="base">
+        <metal:slot define-slot="base">
+          <base tal:attributes="href plone_view/renderBase" /><!--[if lt IE 7]></base><![endif]-->
+        </metal:slot>
+      </metal:block>
+
       <metal:block fill-slot="style_slot">
         <metal:slot define-slot="style_slot">
         </metal:slot>
