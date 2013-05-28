@@ -4,7 +4,7 @@ import zope.component
 import zope.event
 from zope.schema.fieldproperty import FieldProperty
 import zope.lifecycleevent
-from zope.app.container.interfaces import IAdding
+from zope.browser.interfaces import IAdding
 
 from AccessControl import Unauthorized
 from Acquisition import aq_parent, aq_inner
