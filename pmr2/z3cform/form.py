@@ -12,7 +12,6 @@ from Acquisition import aq_parent, aq_inner
 import z3c.form.form
 import z3c.form.interfaces
 from z3c.form.interfaces import IWidgets
-from z3c.form.form import Form
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.z3cform.fieldsets import group
 from plone.z3cform.interfaces import IForm, IWrappedForm
@@ -31,6 +30,14 @@ form_factory = ZopeTwoFormTemplateFactory(path('form.pt'),
     request=IFormLayer)
 
 
+class Form(z3c.form.form.Form):
+
+    def updateActions(self):
+        super(Form, self).updateActions()
+        for k in self.actions.keys():
+            self.actions[k].addClass("btn")
+
+
 class DisplayForm(z3c.form.form.DisplayForm):
     """\
     A very generic display form.
@@ -44,7 +51,7 @@ class DisplayForm(z3c.form.form.DisplayForm):
         return self.render()
 
 
-class AuthenticatedForm(z3c.form.form.Form):
+class AuthenticatedForm(Form):
     """\
     Form with authentication protection.
     """
