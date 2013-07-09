@@ -1,7 +1,15 @@
 Changelog
 =========
 
-0.1 - Unreleased
+0.2 - 2013-07-09
+----------------
+
+* Now provide the customized ploneform macros, migrated in from the
+  pmr2.app module.
+* Making use of bootstrap classes
+* Removed deprecated zope.app.* imports.
+
+0.1 - 2013-01-17
 ----------------
 
 * Initial release of various helper forms and view classes for the pmr2
