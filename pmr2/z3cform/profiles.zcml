@@ -5,9 +5,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="PMR2 z3c.form support"
+      title="pmr2.z3cform"
       directory="profiles/default"
-      description="PMR2 and related library specific extensions to z3c.form."
+      description="Extension profile to z3c.form and plone.z3cform for Physiome Model Repository core and its add-ons."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
