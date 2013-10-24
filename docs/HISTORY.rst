@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.1 - 2013-10-24
+------------------
+
+* Packaging fixes; this is done for wording and cleaner generic setup
+  integration.
+
 0.2 - 2013-07-09
 ----------------
 
