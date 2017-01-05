@@ -71,7 +71,11 @@ class TestRequest(z3c.form.testing.TestRequest):
             # Since the key manager is not installed, authenticator 
             # should not be working anyway.
             return
-        secret = manager.secret()
+        try:
+            secret = manager.secret(u'_forms')
+        except:
+            # fallback to standard secret
+            secret = manager.secret()
         user = _getUserName()
         auth = hmac.new(secret, user, sha).hexdigest()
         self['_authenticator'] = auth

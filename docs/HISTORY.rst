@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.3 - 2017-01-05
+----------------
+
+* Support for the form specific keyring introduced by plone.protect>3
+  and plone.keyring>3; fallback is also supported.
+
 0.2.1 - 2013-10-24
 ------------------
 
