@@ -75,8 +75,15 @@ class TestRequest(z3c.form.testing.TestRequest):
             # Since the key manager is not installed, authenticator 
             # should not be working anyway.
             return
-        self['_authenticator'] = zope.component.getMultiAdapter(
-            (object, self), name='authenticator').token()
+
+        try:
+            self['_authenticator'] = zope.component.getMultiAdapter(
+                (object, self), name='authenticator').token()
+        except:
+            secret = manager.secret()
+            user = _getUserName()
+            auth = hmac.new(secret, user, sha).hexdigest()
+            self['_authenticator'] = auth
 
     def getApplicationURL(self):
         # XXX compatibility with the more strict redirection introduced
