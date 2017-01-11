@@ -1,15 +1,11 @@
 Changelog
 =========
 
-0.3.2 - 2017-01-11
+0.3.3 - 2017-01-11
 ------------------
 
 * Using the view directly should work for both plone.protect 2 and 3
   within the unittesting environment.
-
-0.3.1 - 2017-01-11
-------------------
-
 * Ensure the local test cases here work with fixes introduced by
   Products.PloneHotfix20160830.
 * Update the keyring support to deal with anonymous test users to permit
