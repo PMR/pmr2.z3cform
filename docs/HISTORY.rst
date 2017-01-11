@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.1 - 2017-01-11
+------------------
+
+* Ensure the local test cases here work with fixes introduced by
+  Products.PloneHotfix20160830.
+* Update the keyring support to deal with anonymous test users to permit
+  following of the same logic.
+
 0.3 - 2017-01-05
 ----------------
 
