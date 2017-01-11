@@ -56,6 +56,10 @@ class TestRequest(z3c.form.testing.TestRequest):
             self.method = 'POST'
             self._set_authenticator()
 
+    @property
+    def REQUEST_METHOD(self):
+        return self.method
+
     def __setitem__(self, key, value):
         self.form[key] = value
 
@@ -71,12 +75,19 @@ class TestRequest(z3c.form.testing.TestRequest):
             # Since the key manager is not installed, authenticator 
             # should not be working anyway.
             return
+        user = _getUserName()
         try:
-            secret = manager.secret(u'_forms')
+            if user == "Anonymous User":
+                try:
+                    secret = manager.secret(u'_anon')
+                except KeyError:
+                    # no anonymous key defined.
+                    secret = manager.secret(u'_system')
+            else:
+                secret = manager.secret(u'_forms')
         except:
             # fallback to standard secret
             secret = manager.secret()
-        user = _getUserName()
         auth = hmac.new(secret, user, sha).hexdigest()
         self['_authenticator'] = auth
 
