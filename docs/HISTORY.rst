@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.3.2 - 2017-01-11
+------------------
+
+* Using the view directly should work for both plone.protect 2 and 3
+  within the unittesting environment.
+
 0.3.1 - 2017-01-11
 ------------------
 
